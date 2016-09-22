@@ -1,0 +1,93 @@
+
+
+
+
+
+
+            <div class="col-md-6">
+
+                <div class="new_button">
+
+
+
+
+                      <a href="/events/new" class="btn btn-primary">Add Event</a>
+
+
+                </div>
+
+                <br/>
+                <table id="formtable" class="table table-striped table-hover" cellspacing="0" width="100%"
+                    >
+                    <thead>
+                        <tr style="box-shadow:0px 0px 5px #4B90CD;background-color: #4B90CD;color: #fff;">
+
+                            <th>Event Name</th>
+                            <th>Total Amount</th>
+             
+
+
+                        <th  style="  width: 115px;">Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="template_form">
+
+
+
+
+
+
+
+
+                        <%@events.each do |event|%>
+                        <tr id ="<%=event.id%>">
+
+                            <td>
+
+                                  <%=  event.name%>
+
+
+                            </td>
+                            <td><%= event.amount%></td>
+                           
+                           
+
+
+                            <td>
+                            <%= event.date_of_event.to_date.strftime("%d %B, %Y")%>	
+
+
+
+                                 
+
+                            </td>
+                        </tr>
+                        <%end%>
+
+
+
+
+
+
+                    </tbody>
+                </table>
+            
+
+                <% @events.first.user_paids.each do |user_paid| %>
+                   <%unless user_paid.amount_to_pay.nil?%>
+                	  <%= user_paid.user.name %> has to pay <%= user_paid.amount_to_pay%> to <%=@events.first.user_paids.where(amount_to_pay: nil ).first.user.name%>
+                  <%end%>
+                	 <br/>
+                <%end%>
+
+
+            </div>
+
+
+
+
+
+             
+
+
