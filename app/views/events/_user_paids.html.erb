@@ -1,7 +1,7 @@
   <div class="form-group">
       <label for="email" class="col-sm-3 control-label">Friend Name:<span>*</span></label>
       <div class="col-sm-9">
-       <%= f.select :user_id,  options_for_select(@users.collect{|x| [x.name, x.id]}), {:prompt => "--Select--"}, :class => 'form-control' %>
+       <%= f.select :user_id,  options_for_select(@users.collect{|x| [x.name, x.id]}), {:prompt => "--Select--"}, :class => 'form-control', :required=> true %>
         
       </div>
   </div>
@@ -9,6 +9,6 @@
   <div class="form-group">
       <label for="job_title" class="col-sm-3 control-label">Amount:<span>*</span></label>
       <div class="col-sm-9">
-         <%= f.number_field :amount , :value=> "", :class=>"form-control"%>  
+         <%= f.number_field :amount , :class=>"form-control", :required=> true%>  
       </div>
   </div>
