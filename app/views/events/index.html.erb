@@ -73,14 +73,14 @@
                     </tbody>
                 </table>
             
-
+                <%if @events.present?%>
                 <% @events.first.user_paids.each do |user_paid| %>
                    <%unless user_paid.amount_to_pay.nil?%>
                 	  <%= user_paid.user.name %> has to pay <%= user_paid.amount_to_pay%> to <%=@events.first.user_paids.where(amount_to_pay: nil ).first.user.name%>
                   <%end%>
                 	 <br/>
                 <%end%>
-
+                <%end%>
 
             </div>
 
